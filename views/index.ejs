@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To DO App</title>
+  <!--Font awesome cdn-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/e8e6c63b94.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="app-title">TO DO APP</h1>
+
+   
+    
+    <div class="todo-action">
+
+      
+      
+      <form action="/action/create-todo" method="post" class="todo-form">
+
+        <!--Todo description input-->
+        <input type="text" name="todoDesc" class="todo-description" placeholder="What you want to do today" required>
+
+        <!--Todo catergory input-->
+        <div class="selecting-data">
+          <div class="category-type">
+            <label for="todo-category">Category</label>
+            <select name="todoCategory" id="todo-cat" class="todo-category" required>
+            
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="College">College</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          
+          <!--Todo Date input-->
+          <div class="due-date">
+            <label for="todoDate">Due Date:</label>
+            <input type="date" id="todo-date" name="todoDate">
+          </div>
+        </div>
+        
+        <!--Todo Add and delete buttons-->
+        <div class="todo-buttons">
+          <button type="submit" class="add-todo"><i class="fa-solid fa-circle-plus"></i></button>
+          <button id="delete-button" type="submit" form="tasks-list-form" class="delete-todo"><i class="fa-solid fa-circle-xmark"></i></button></a>
+        </div>
+      </form>
+      
+    </div>
+
+
+    <!--TODO Display Section-->
+    <div class="todo-display">
+      <form action="/action/delete-todo" method="POST" id="tasks-list-form">
+        <% TodoList.slice().reverse().forEach( i => { %>
+          
+          <div class="todo-display-list">
+            
+            
+            <!--TODO Checkbox-->
+            <label class="container-checkbox">
+              <input type="checkbox" class="checkbox" name="id" value="<%= i.id %>" >
+              
+              <span class="checkmark"></span>
+            </label>
+            
+            <!--TODO Info Des and Date-->
+            <div class="todo-list">
+              <h3 class="demo"><%= i.todoDesc %></h3>
+              <h4><i class="fa-solid fa-calendar-days"></i><%= i.todoDate %></h4>
+            </div>
+            
+            <!--TODO Category-->
+            <div class="todo-display-category">
+              <h4 style="background-color: <%= color_list[i.todoCategory] %>"> <%= i.todoCategory %> </h4>
+            </div>
+          </div>
+
+        <% }) %>
+
+      </form>
+      
+    </div>
+  </div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
