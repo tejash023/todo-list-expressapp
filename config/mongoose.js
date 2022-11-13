@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //connect to database
-mongoose.connect('mongodb://localhost/todo_app_db');
+mongoose.connect(process.env.DB_URL);
 
 //acquire the connection to check if it is connected successfully
 const db = mongoose.connection;
