@@ -264,12 +264,12 @@ background-image: linear-gradient(19deg, #033b75 0%, #B721FF 100%);
 
   
   .category-type{
-  
-  
-  width: 80%;
-  /* margin: 10px; */
-  padding-bottom: 21px;
-}
+    width: 80%;
+  }
+
+  .due-date{
+    width: 100%;
+  }
 }
 
 
